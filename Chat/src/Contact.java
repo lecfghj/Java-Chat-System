@@ -1,7 +1,6 @@
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class Contact implements Serializable {
     private String name;

@@ -11,6 +11,9 @@ public class Chat {
         messages  = new LinkedList<>();
     }
 
+    public List<Message> getMessages() {
+        return this.messages;
+    }
 
     public List<Message> findMessages(String inputToFind){
         List<Message> foundMessages = new LinkedList<>();
@@ -43,5 +46,4 @@ public class Chat {
             }
         }
     }
-
 }
