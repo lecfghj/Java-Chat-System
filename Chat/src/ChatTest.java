@@ -10,7 +10,7 @@ public class ChatTest {
     private Message message2;
 
     @BeforeEach
-    public void setup() {
+    public void testChatConstructor() {
         chat = new Chat();
         message1 = new Message();
         message1.setContent("Hello");

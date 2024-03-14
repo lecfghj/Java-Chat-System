@@ -1,32 +1,41 @@
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ImageProcessingTest {
 
     private ImageProcessing imageProcessing;
 
     @BeforeEach
-    public void setup() {
+    public void setUp() {
         imageProcessing = new ImageProcessing();
     }
 
     @Test
-    public void testLoadImageValidPath() {
-        BufferedImage image = imageProcessing.loadImage("src/testImage.png");
-        assertNotNull(image, "Image should not be null for a valid path");
+    public void testLoadImage_fileExists() throws IOException {
+        BufferedImage result = imageProcessing.loadImage("PLACEHOLDER");
+        assertNotNull(result);
     }
 
     @Test
-    public void testLoadImageInvalidPath() {
-        BufferedImage image = imageProcessing.loadImage("src/nonexistentImage.png");
-        assertNull(image, "Image should be null for an invalid path");
+    public void testLoadImage_fileDoesNotExist() {
+        BufferedImage result = imageProcessing.loadImage("path/to/nonexistent/image.jpg");
+        assertNull(result);
     }
 
     @Test
-    public void testLoadImageExceptionHandling() {
-        BufferedImage image = imageProcessing.loadImage(null);
-        assertNull(image, "Image should be null when an exception is thrown");
+    public void testLoadDefaultImage_fileExists() throws IOException {
+        BufferedImage result = imageProcessing.loadDefaultImage("PLACEHOLDER");
+        assertNotNull(result);
+    }
+
+    @Test
+    public void testLoadDefaultImage_fileDoesNotExist() {
+        BufferedImage result = imageProcessing.loadDefaultImage("path/to/nonexistent/default.jpg");
+        assertNull(result);
     }
 }
