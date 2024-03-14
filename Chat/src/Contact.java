@@ -17,7 +17,7 @@ public class Contact implements Serializable {
         ImageProcessing ip = new ImageProcessing();
 
         dateAdded = LocalDateTime.now();
-        profileImage = ip.loadImage("src/defaultImage.png");
+        profileImage = ip.loadImage("Chat/src/defaultImage.png");
     }
 
     public LocalDateTime getDateAdded() {

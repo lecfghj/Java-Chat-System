@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.Collection;
 
 public class User extends Contact{
 
@@ -63,7 +62,7 @@ public class User extends Contact{
         return sortedList;
     }
 
-    public List<Contact> sortContactsNewestToOldest(){
+    public List<Contact> sortContactsOldestToNewest(){
         List<Contact> sortedList = new ArrayList<>(contactList);
 
         sortedList.sort(new Comparator<Contact>() {
@@ -75,7 +74,7 @@ public class User extends Contact{
         return sortedList;
     }
 
-    public List<Contact> sortContactsOldestToNewest(){
+    public List<Contact> sortContactsNewestToOldest(){
         List<Contact> sortedList = new ArrayList<>(contactList);
 
         sortedList.sort(new Comparator<Contact>() {
