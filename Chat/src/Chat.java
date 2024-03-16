@@ -18,14 +18,14 @@ public class Chat {
     public List<Message> findMessages(String inputToFind){
         List<Message> foundMessages = new LinkedList<>();
 
-        if(messages.isEmpty()){
+        if(this.messages.isEmpty()){
             return foundMessages;
         }
 
-        for(int i = 0; i < messages.size(); i++){
-            String content = messages.get(i).getContent();
+        for(int i = 0; i < this.messages.size(); i++){
+            String content = this.messages.get(i).getContent();
             if(content.contains(inputToFind)) {
-                foundMessages.add(messages.get(i));
+                foundMessages.add(this.messages.get(i));
             }
         }
 
@@ -38,9 +38,9 @@ public class Chat {
      * All new messages will be automatically set to read
      */
     public void readMessages(){
-        for(int i = messages.size() - 1; i >= 0; i--){
-            if(!messages.get(i).isStatus()){
-                messages.get(i).setStatus(true);
+        for(int i = this.messages.size() - 1; i >= 0; i--){
+            if(!this.messages.get(i).isStatus()){
+                this.messages.get(i).setStatus(true);
             }else{
                 return;
             }

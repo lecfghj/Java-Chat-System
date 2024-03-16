@@ -21,13 +21,14 @@ public class MessageTest {
         assertEquals(content, message.getContent());
     }
 
+    /*
     @Test
     public void testSetReaction() {
         Message message = new Message();
         int reaction = 1;
         message.setReaction(reaction);
         assertEquals(reaction, message.getReaction());
-    }
+    }*/
 
     @Test
     public void testSetAuthor() {

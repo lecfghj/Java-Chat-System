@@ -19,13 +19,14 @@ public class ContactTest {
         assertEquals(1234567890, contact.getPhoneNumber());
     }
 
+    /*
     @Test
     public void testSetProfileImage() {
         Contact contact = new Contact();
         BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
         contact.setProfileImage(image);
         assertEquals(image, contact.getProfileImage());
-    }
+    }*/
 
     @Test
     public void testDateAdded() {

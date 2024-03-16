@@ -3,14 +3,18 @@ import java.util.*;
 public class User extends Contact{
 
     private List<Contact> contactList;
+    private List<Contact> contactAlphabetical;
 
     public User(){
         super();
-        contactList = new ArrayList<>();
+        this.contactList = new ArrayList<>();
+        this.contactAlphabetical = new LinkedList<>();
     }
 
     public void addContact(Contact newContact){
-        contactList.add(newContact);
+        this.contactList.add(newContact);
+
+        this.contactAlphabetical = this.sortContactsAlphabeticallyEfficient();
     }
 
     public List<Contact> getContactList() {
@@ -23,26 +27,26 @@ public class User extends Contact{
 
     //Print names for testing purposes
     public void printContactsNames(){
-        for(int i = 0; i<contactList.size(); i++){
-            System.out.println(contactList.get(i).getName());
+        for(int i = 0; i< this.contactList.size(); i++){
+            System.out.println(this.contactList.get(i).getName());
         }
     }
 
     public List<Contact> sortContactsAlphabetically(){
         List<Contact> contactsSorted = new ArrayList<>();
-        String[] names = new String[contactList.size()];
+        String[] names = new String[this.contactList.size()];
 
-        for (int i = 0; i < contactList.size(); i++){
-            names[i] = contactList.get(i).getName();
+        for (int i = 0; i < this.contactList.size(); i++){
+            names[i] = this.contactList.get(i).getName();
         }
         Arrays.sort(names);
 
-        for(int i = 0; i < contactList.size(); i++){
+        for(int i = 0; i < this.contactList.size(); i++){
             String nameToFind = names[i];
-            for(int j = 0; j < contactList.size(); j++){
-                String currentName = contactList.get(j).getName();
+            for(int j = 0; j < this.contactList.size(); j++){
+                String currentName = this.contactList.get(j).getName();
                 if(nameToFind.equals(currentName)){
-                    contactsSorted.add(contactList.get(j));
+                    contactsSorted.add(this.contactList.get(j));
                 }
             }
         }
@@ -50,7 +54,7 @@ public class User extends Contact{
     }
 
     public List<Contact> sortContactsAlphabeticallyEfficient(){
-        List<Contact> sortedList = new ArrayList<>(contactList);
+        List<Contact> sortedList = new ArrayList<>(this.contactList);
 
         sortedList.sort(new Comparator<Contact>() {
             @Override
@@ -63,7 +67,7 @@ public class User extends Contact{
     }
 
     public List<Contact> sortContactsOldestToNewest(){
-        List<Contact> sortedList = new ArrayList<>(contactList);
+        List<Contact> sortedList = new ArrayList<>(this.contactList);
 
         sortedList.sort(new Comparator<Contact>() {
             @Override
@@ -75,7 +79,7 @@ public class User extends Contact{
     }
 
     public List<Contact> sortContactsNewestToOldest(){
-        List<Contact> sortedList = new ArrayList<>(contactList);
+        List<Contact> sortedList = new ArrayList<>(this.contactList);
 
         sortedList.sort(new Comparator<Contact>() {
             @Override
