@@ -16,10 +16,10 @@ public class ImageProcessingTest {
     }
 
     @Test
-    public void testLoadImage_fileExists() throws IOException {
-        BufferedImage result = imageProcessing.loadImage("PLACEHOLDER");
+    public void testLoadImage_fileExists() {
+        BufferedImage result = imageProcessing.loadImage("src/test/resources/testImage.jpg");
         assertNotNull(result);
-    }
+    } //Test does not pass, as the image does not exist
 
     @Test
     public void testLoadImage_fileDoesNotExist() {
@@ -28,10 +28,10 @@ public class ImageProcessingTest {
     }
 
     @Test
-    public void testLoadDefaultImage_fileExists() throws IOException {
-        BufferedImage result = imageProcessing.loadDefaultImage("PLACEHOLDER");
+    public void testLoadDefaultImage_fileExists() {
+        BufferedImage result = imageProcessing.loadDefaultImage("src/test/resources/defaultImage.jpg");
         assertNotNull(result);
-    }
+    } //Test does not pass, as the image does not exist
 
     @Test
     public void testLoadDefaultImage_fileDoesNotExist() {

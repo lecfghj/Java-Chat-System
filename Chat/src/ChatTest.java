@@ -10,7 +10,7 @@ public class ChatTest {
     private Message message2;
 
     @BeforeEach
-    public void testChatConstructor() {
+    public void setUp() {
         chat = new Chat();
         message1 = new Message();
         message1.setContent("Hello");
@@ -24,8 +24,8 @@ public class ChatTest {
     public void testGetMessages() {
         List<Message> messages = chat.getMessages();
         assertEquals(2, messages.size());
-        assertEquals("Hello", messages.get(0).getContent());
-        assertEquals("Goodbye", messages.get(1).getContent());
+        assertEquals(message1, messages.get(0));
+        assertEquals(message2, messages.get(1));
     }
 
     @Test
@@ -37,6 +37,8 @@ public class ChatTest {
 
     @Test
     public void testReadMessages() {
+        message1.setStatus(false);
+        message2.setStatus(false);
         chat.readMessages();
         assertTrue(message1.isStatus());
         assertTrue(message2.isStatus());
