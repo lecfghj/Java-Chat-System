@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 import java.time.LocalDateTime;
 
 public class ContactTest {
@@ -19,14 +19,13 @@ public class ContactTest {
         assertEquals(1234567890, contact.getPhoneNumber());
     }
 
-    /*
     @Test
     public void testSetProfileImage() {
         Contact contact = new Contact();
-        BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_RGB);
-        contact.setProfileImage(image);
-        assertEquals(image, contact.getProfileImage());
-    }*/
+        ImageIcon imageIcon = new ImageIcon("src/testImage.png");
+        contact.setProfileImage(imageIcon);
+        assertEquals(imageIcon, contact.getProfileImage());
+    }
 
     @Test
     public void testDateAdded() {
@@ -34,4 +33,12 @@ public class ContactTest {
         LocalDateTime now = LocalDateTime.now();
         assertTrue(contact.getDateAdded().isBefore(now.plusSeconds(1)) && contact.getDateAdded().isAfter(now.minusSeconds(1)));
     }
+
+    @Test
+    public void testSendMessage() {
+        Contact contact = new Contact();
+        contact.sendMessage("Hello");
+        assertEquals(1, contact.getLastThreeMessages().size());
+        assertEquals("Hello", contact.getLastThreeMessages().get(0).getContent());
+    } //Test does not pass since 
 }
