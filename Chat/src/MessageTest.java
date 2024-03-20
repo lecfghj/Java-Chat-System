@@ -24,7 +24,11 @@ public class MessageTest {
     public void testSetReaction() {
         Message message = new Message();
         Contact author = new Contact();
+<<<<<<< HEAD
         int reactionID = 1;
+=======
+        Integer reactionID = 1;
+>>>>>>> origin/master
         message.setReaction(author, reactionID);
         assertEquals(reactionID, message.getReaction().get(author));
     }
