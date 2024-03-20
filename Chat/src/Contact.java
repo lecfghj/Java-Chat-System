@@ -25,6 +25,10 @@ public class Contact implements Serializable {
         this.lastThreeMessages = new LinkedList<>();
     }
 
+    public List<Message> getLastThreeMessages() {
+        return this.lastThreeMessages;
+    }
+
     public LocalDateTime getDateAdded() {
         return this.dateAdded;
     }
@@ -62,11 +66,12 @@ public class Contact implements Serializable {
         if(this.lastThreeMessages.size() < 3){ // If list has less than 3 messages
             this.lastThreeMessages.add(newMessage); //Adds new element to the end of the list
         }else{ // If list has three messages
-            this.lastThreeMessages.removeFirst(); //Removes the first element from the list
+            ((LinkedList<Message>)this.lastThreeMessages).removeFirst(); //Removes the first element from the list
             this.lastThreeMessages.add(newMessage); //Adds new element to the end of the list
         }
-
     }
+    
+    
     public static void main(String[] args){
 
     }

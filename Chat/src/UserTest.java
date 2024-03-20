@@ -60,5 +60,5 @@ public class UserTest {
         List<Contact> sortedContacts = user.sortContactsOldestToNewest();
         assertEquals(contact1, sortedContacts.get(0));
         assertEquals(contact2, sortedContacts.get(1));
-    }
+    } 
 }
