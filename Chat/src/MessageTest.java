@@ -3,11 +3,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MessageTest {
 
-
     @Test
     public void testConstructor() {
         Message message = new Message();
-        assertEquals(0, message.getReaction());
+        assertTrue(message.getReaction().isEmpty());
         assertFalse(message.isStatus());
         assertNull(message.getContent());
         assertNull(message.getAuthor());
@@ -21,14 +20,14 @@ public class MessageTest {
         assertEquals(content, message.getContent());
     }
 
-    /*
     @Test
     public void testSetReaction() {
         Message message = new Message();
-        int reaction = 1;
-        message.setReaction(reaction);
-        assertEquals(reaction, message.getReaction());
-    }*/
+        Contact author = new Contact();
+        int reactionID = 1;
+        message.setReaction(author, reactionID);
+        assertEquals(reactionID, message.getReaction().get(author));
+    }
 
     @Test
     public void testSetAuthor() {

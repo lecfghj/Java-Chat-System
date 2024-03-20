@@ -17,25 +17,24 @@ public class ImageProcessingTest {
 
     @Test
     public void testLoadImage_fileExists() throws IOException {
-        BufferedImage result = imageProcessing.loadImage("PLACEHOLDER");
+        BufferedImage result = imageProcessing.loadImage("src/defaultImage.png");
         assertNotNull(result);
-    }
-
+    } //Default image does not exist
     @Test
     public void testLoadImage_fileDoesNotExist() {
-        BufferedImage result = imageProcessing.loadImage("path/to/nonexistent/image.jpg");
+        BufferedImage result = imageProcessing.loadImage("path/to/nonexistentImage.jpg");
         assertNull(result);
     }
 
     @Test
     public void testLoadDefaultImage_fileExists() throws IOException {
-        BufferedImage result = imageProcessing.loadDefaultImage("PLACEHOLDER");
+        BufferedImage result = imageProcessing.loadDefaultImage("src/defaultImage.png");
         assertNotNull(result);
-    }
+    } //Default image does not exist
 
     @Test
     public void testLoadDefaultImage_fileDoesNotExist() {
-        BufferedImage result = imageProcessing.loadDefaultImage("path/to/nonexistent/default.jpg");
+        BufferedImage result = imageProcessing.loadDefaultImage("path/to/nonexistentDefault.jpg");
         assertNull(result);
     }
 }
