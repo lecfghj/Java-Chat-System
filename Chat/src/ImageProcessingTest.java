@@ -17,9 +17,9 @@ public class ImageProcessingTest {
 
     @Test
     public void testLoadImage_fileExists() throws IOException {
-        BufferedImage result = imageProcessing.loadImage("src/test/resources/testImage.jpg");
+        BufferedImage result = imageProcessing.loadImage("Chat/src/defaultImage.png");
         assertNotNull(result);
-    } //Does not work since the file does not exist
+    } //Used default image instead of a real image
 
     @Test
     public void testLoadImage_fileDoesNotExist() {
@@ -29,9 +29,9 @@ public class ImageProcessingTest {
 
     @Test
     public void testLoadDefaultImage_fileExists() throws IOException {
-        BufferedImage result = imageProcessing.loadDefaultImage("src/test/resources/defaultImage.jpg");
+        BufferedImage result = imageProcessing.loadDefaultImage("Chat/src/defaultImage.png");
         assertNotNull(result);
-    } //Does not work since the file does not exist
+    } //Used default image instead of a real image
 
     @Test
     public void testLoadDefaultImage_fileDoesNotExist() {
