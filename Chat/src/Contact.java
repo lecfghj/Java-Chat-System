@@ -57,11 +57,13 @@ public class Contact implements Serializable {
         this.profileImage = profileImage;
     }
 
-    public void sendMessage(String content){
+    public void sendMessage(String content, Chat destination){
         // Initialize new message
         Message newMessage = new Message(this);
         newMessage.setContent(content);
         newMessage.setStatus(false);
+
+        destination.addMessage(newMessage);
 
         if(this.lastThreeMessages.size() < 3){ // If list has less than 3 messages
             this.lastThreeMessages.add(newMessage); //Adds new element to the end of the list
@@ -73,6 +75,5 @@ public class Contact implements Serializable {
     
     
     public static void main(String[] args){
-
     }
 }

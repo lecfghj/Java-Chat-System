@@ -37,8 +37,11 @@ public class ContactTest {
     @Test
     public void testSendMessage() {
         Contact contact = new Contact();
-        contact.sendMessage("Hello");
+        Chat chat = new Chat();
+        contact.sendMessage("Hello", chat);
         assertEquals(1, contact.getLastThreeMessages().size());
+        assertEquals(1, chat.getMessages().size());
         assertEquals("Hello", contact.getLastThreeMessages().get(0).getContent());
+        assertEquals("Hello", chat.getMessages().get(0).getContent());
     }
 }

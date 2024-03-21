@@ -15,6 +15,10 @@ public class Chat {
         return this.messages;
     }
 
+    public void addMessage(Message newMessage){
+        this.messages.add(newMessage);
+    }
+
     public List<Message> findMessages(String inputToFind){
         List<Message> foundMessages = new LinkedList<>();
 
