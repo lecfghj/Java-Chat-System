@@ -6,7 +6,7 @@ public class UserTest {
 
     @Test
     public void testAddContact() {
-        User user = new User();
+        User user = new User("A", 234);
         Contact contact = new Contact();
         contact.setName("Test Contact");
         user.addContact(contact);
@@ -16,7 +16,7 @@ public class UserTest {
 
     @Test
     public void testSortContactsAlphabetically() {
-        User user = new User();
+        User user = new User("0", 123);
         Contact contact1 = new Contact();
         contact1.setName("B");
         Contact contact2 = new Contact();
@@ -31,14 +31,18 @@ public class UserTest {
 
     @Test
     public void testSortContactsNewestToOldest() throws InterruptedException {
-        User user = new User();
+        User user = new User("0", 123);
         Contact contact1 = new Contact();
+        contact1.setName("A");
+        contact1.setPhoneNumber(12345678);
         user.addContact(contact1);
 
         // Introduce a delay
         Thread.sleep(1000);
 
         Contact contact2 = new Contact();
+        contact2.setName("B");
+        contact2.setPhoneNumber(34567890);
         user.addContact(contact2);
 
         List<Contact> sortedContacts = user.sortContactsNewestToOldest();
@@ -48,14 +52,18 @@ public class UserTest {
 
     @Test
     public void testSortContactsOldestToNewest() throws InterruptedException {
-        User user = new User();
+        User user = new User("0",987);
         Contact contact1 = new Contact();
+        contact1.setName("A");
+        contact1.setPhoneNumber(12345678);
         user.addContact(contact1);
 
         // Introduce a delay
         Thread.sleep(1000);
 
         Contact contact2 = new Contact();
+        contact2.setName("B");
+        contact2.setPhoneNumber(34567890);
         user.addContact(contact2);
 
         List<Contact> sortedContacts = user.sortContactsOldestToNewest();

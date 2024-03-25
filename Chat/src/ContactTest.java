@@ -1,7 +1,9 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDateTime;
+import java.util.LinkedList;
 import javax.swing.ImageIcon;
+import java.util.List;
 
 public class ContactTest {
 
@@ -36,9 +38,13 @@ public class ContactTest {
 
     @Test
     public void testSendMessage() {
-        Contact contact = new Contact();
-        Chat chat = new Chat();
+        Contact contact = new Contact("Aaron", 374322);
+        List<Contact> members = new LinkedList<>();
+        members.add(contact);
+        contact.createChat("", members);
+        Chat chat = contact.getChats().getFirst();
         contact.sendMessage("Hello", chat);
+
         assertEquals(1, contact.getLastThreeMessages().size());
         assertEquals(1, chat.getMessages().size());
         assertEquals("Hello", contact.getLastThreeMessages().get(0).getContent());

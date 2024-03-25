@@ -6,7 +6,7 @@ public class MessageTest {
     @Test
     public void testConstructor() {
         Message message = new Message();
-        assertTrue(message.getReaction().isEmpty());
+        assertTrue(message.getReactions().isEmpty());
         assertFalse(message.isStatus());
         assertNull(message.getContent());
         assertNull(message.getAuthor());
@@ -26,7 +26,7 @@ public class MessageTest {
         Contact author = new Contact();
         Integer reactionID = 1;
         message.setReaction(author, reactionID);
-        assertEquals(reactionID, message.getReaction().get(author));
+        assertEquals(reactionID, message.getReactions().get(author));
     }
 
     @Test

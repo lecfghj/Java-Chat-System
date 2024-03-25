@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.LinkedList;
 import java.util.List;
 
 public class ChatTest {
@@ -11,7 +13,12 @@ public class ChatTest {
 
     @BeforeEach
     public void setUp() {
-        chat = new Chat();
+        List<Contact> members = new LinkedList<>();
+        Contact test1 = new Contact("A", 27376);
+        Contact test2 = new Contact("B", 276311);
+        members.add(test1);
+        members.add(test2);
+        chat = new Chat("chat", members);
         message1 = new Message();
         message1.setContent("Hello");
         message2 = new Message();

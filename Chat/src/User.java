@@ -5,8 +5,10 @@ public class User extends Contact{
     private List<Contact> contactList;
     private List<Contact> contactAlphabetical;
 
-    public User(){
+    public User(String name, int phoneNumber){
         super();
+        this.setName(name);
+        this.setPhoneNumber(phoneNumber);
         this.contactList = new ArrayList<>();
         this.contactAlphabetical = new LinkedList<>();
     }
@@ -17,8 +19,12 @@ public class User extends Contact{
         this.contactAlphabetical = this.sortContactsAlphabeticallyEfficient();
     }
 
+    public List<Contact> getContactAlphabetical(){
+        return this.contactAlphabetical;
+    }
+
     public List<Contact> getContactList() {
-        return contactList;
+        return this.contactList;
     }
 
     public void setContactList(List<Contact> contactList) {
@@ -67,6 +73,11 @@ public class User extends Contact{
     }
 
     public List<Contact> sortContactsOldestToNewest(){
+
+        if(contactList==null){
+            return null;
+        }
+
         List<Contact> sortedList = new ArrayList<>(this.contactList);
 
         sortedList.sort(new Comparator<Contact>() {
@@ -79,6 +90,11 @@ public class User extends Contact{
     }
 
     public List<Contact> sortContactsNewestToOldest(){
+
+        if(contactList==null){
+            return null;
+        }
+
         List<Contact> sortedList = new ArrayList<>(this.contactList);
 
         sortedList.sort(new Comparator<Contact>() {

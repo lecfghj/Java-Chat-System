@@ -1,9 +1,12 @@
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import javax.swing.ImageIcon;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Contact implements Serializable {
     private String name;
@@ -12,6 +15,7 @@ public class Contact implements Serializable {
     private ImageIcon profileImage;
     // Container for most recent messages sent, has most recent message at the end of the list and the least recent at the start
     private List<Message> lastThreeMessages;
+    private List<Chat> chats;
 
     /**
      * Default constructor for Contact object
@@ -23,8 +27,32 @@ public class Contact implements Serializable {
         this.profileImage = new ImageIcon("src/defaultImage.png");
 
         this.lastThreeMessages = new LinkedList<>();
+        this.chats = new LinkedList<>();
     }
+    public Contact(String name, int phoneNumber){
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.dateAdded = LocalDateTime.now();
+        this.profileImage = new ImageIcon("src/defaultImage.png");
 
+        this.lastThreeMessages = new LinkedList<>();
+        this.chats = new LinkedList<>();
+    }
+    public void createChat(String chatName, List<Contact> members){
+        Chat newChat = new Chat(chatName, members);
+
+        Iterator<Contact> iterator = newChat.getMembers().iterator();
+        while(iterator.hasNext()){
+            Contact current = iterator.next();
+            current.addChat(newChat);
+        }
+    }
+    public List<Chat> getChats(){
+        return this.chats;
+    }
+    public void addChat(Chat newChat){
+        this.chats.add(newChat);
+    }
     public List<Message> getLastThreeMessages() {
         return this.lastThreeMessages;
     }
@@ -63,17 +91,22 @@ public class Contact implements Serializable {
         newMessage.setContent(content);
         newMessage.setStatus(false);
 
-        destination.addMessage(newMessage);
+        if(chats.contains(destination)){
+            destination.addMessage(newMessage);
+        }else{
+            return;
+        }
 
         if(this.lastThreeMessages.size() < 3){ // If list has less than 3 messages
             this.lastThreeMessages.add(newMessage); //Adds new element to the end of the list
         }else{ // If list has three messages
-            ((LinkedList<Message>)this.lastThreeMessages).removeFirst(); //Removes the first element from the list
+            (this.lastThreeMessages).removeFirst(); //Removes the first element from the list
             this.lastThreeMessages.add(newMessage); //Adds new element to the end of the list
         }
     }
     
     
     public static void main(String[] args){
+
     }
 }
