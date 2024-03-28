@@ -22,13 +22,13 @@ public class Contact implements Serializable {
      * Initializes the contact with the current date as dateAdded and defaultImage as profileImage
      * Default image path is src/defaultImage.png
      */
-    public Contact(){
-        this.dateAdded = LocalDateTime.now();
-        this.profileImage = new ImageIcon("src/defaultImage.png");
-
-        this.lastThreeMessages = new LinkedList<>();
-        this.chats = new LinkedList<>();
-    }
+//    public Contact(){
+//        this.dateAdded = LocalDateTime.now();
+//        this.profileImage = new ImageIcon("src/defaultImage.png");
+//
+//        this.lastThreeMessages = new LinkedList<>();
+//        this.chats = new LinkedList<>();
+//    }
     public Contact(String name, int phoneNumber){
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -41,6 +41,7 @@ public class Contact implements Serializable {
     public void createChat(String chatName, List<Contact> members){
         Chat newChat = new Chat(chatName, members);
 
+        newChat.addMember(this);
         Iterator<Contact> iterator = newChat.getMembers().iterator();
         while(iterator.hasNext()){
             Contact current = iterator.next();

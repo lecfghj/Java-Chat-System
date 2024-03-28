@@ -6,9 +6,7 @@ public class User extends Contact{
     private List<Contact> contactAlphabetical;
 
     public User(String name, int phoneNumber){
-        super();
-        this.setName(name);
-        this.setPhoneNumber(phoneNumber);
+        super(name, phoneNumber);
         this.contactList = new ArrayList<>();
         this.contactAlphabetical = new LinkedList<>();
     }
