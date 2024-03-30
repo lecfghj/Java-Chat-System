@@ -101,7 +101,7 @@ public class Contact implements Serializable {
         if(this.lastThreeMessages.size() < 3){ // If list has less than 3 messages
             this.lastThreeMessages.add(newMessage); //Adds new element to the end of the list
         }else{ // If list has three messages
-            (this.lastThreeMessages).removeFirst(); //Removes the first element from the list
+            this.lastThreeMessages.remove(0); //Removes the first element from the list
             this.lastThreeMessages.add(newMessage); //Adds new element to the end of the list
         }
     }

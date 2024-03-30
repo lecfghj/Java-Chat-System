@@ -42,8 +42,7 @@ public class ContactTest {
         List<Contact> members = new LinkedList<>();
         members.add(contact);
         contact.createChat("", members);
-        Chat chat = contact.getChats().getFirst();
-        contact.sendMessage("Hello", chat);
+        Chat chat = contact.getChats().get(0);        contact.sendMessage("Hello", chat);
 
         assertEquals(1, contact.getLastThreeMessages().size());
         assertEquals(1, chat.getMessages().size());
