@@ -50,9 +50,9 @@ public class MessageTest {
 
     @Test
     public void testCountReaction() {
-        Message message = new Message();
-        Contact author1 = new Contact();
-        Contact author2 = new Contact();
+        Contact author1 = new Contact("Author1", 1); // use the existing constructor
+        Contact author2 = new Contact("Author2", 2); // use the existing constructor
+        Message message = new Message(author1); // use the existing constructor
         Integer reactionID = 1;
         message.setReaction(author1, reactionID);
         message.setReaction(author2, reactionID);
