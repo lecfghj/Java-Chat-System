@@ -26,6 +26,10 @@ public class Chat {
         return this.messages;
     }
 
+    public String getName(){
+        return this.name;
+    }
+
     public List<Contact> getMembers(){
         return this.members;
     }
