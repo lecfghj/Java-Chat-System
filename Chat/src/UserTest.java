@@ -3,6 +3,12 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * This class contains unit tests for the User class.
+ * It tests various functionalities of the User class, such as adding contacts, setting contact list,
+ * sorting contacts alphabetically, sorting contacts alphabetically efficiently,
+ * sorting contacts from newest to oldest, and sorting contacts from oldest to newest.
+ */
 public class UserTest {
 
     @Test

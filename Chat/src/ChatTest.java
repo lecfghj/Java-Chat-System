@@ -5,12 +5,18 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * This class contains unit tests for the Chat class.
+ */
 public class ChatTest {
 
     private Chat chat;
     private Message message1;
     private Message message2;
 
+    /**
+     * Sets up the test environment before each test case.
+     */
     @BeforeEach
     public void setUp() {
         List<Contact> members = new LinkedList<>();
@@ -27,6 +33,9 @@ public class ChatTest {
         chat.getMessages().add(message2);
     }
 
+    /**
+     * Tests the setMembers() method of the Chat class.
+     */
     @Test
     public void testSetMembers() {
         List<Contact> newMembers = new LinkedList<>();
@@ -40,17 +49,24 @@ public class ChatTest {
         assertEquals(test4, chat.getMembers().get(1));
     }
 
+    /**
+     * Tests the setMessages() method of the Chat class.
+     */
     @Test
-public void testSetMessages() {
-    List<Message> newMessages = new LinkedList<>();
-    Contact testContact = new Contact("E", 27378); // create a new contact
-    Message message3 = new Message(testContact); // use the existing constructor
-    message3.setContent("New message");
-    newMessages.add(message3);
-    chat.setMessages(newMessages);
-    assertEquals(1, chat.getMessages().size());
-    assertEquals(message3, chat.getMessages().get(0));
-}
+    public void testSetMessages() {
+        List<Message> newMessages = new LinkedList<>();
+        Contact testContact = new Contact("E", 27378); // create a new contact
+        Message message3 = new Message(testContact); // use the existing constructor
+        message3.setContent("New message");
+        newMessages.add(message3);
+        chat.setMessages(newMessages);
+        assertEquals(1, chat.getMessages().size());
+        assertEquals(message3, chat.getMessages().get(0));
+    }
+
+    /**
+     * Tests the addMember() method of the Chat class.
+     */
     @Test
     public void testAddMember() {
         Contact test3 = new Contact("C", 27377);
@@ -59,6 +75,9 @@ public void testSetMessages() {
         assertEquals(test3, chat.getMembers().get(2));
     }
 
+    /**
+     * Tests the removeMember() method of the Chat class.
+     */
     @Test
     public void testRemoveMember() {
         Contact test1 = chat.getMembers().get(0);
@@ -67,16 +86,22 @@ public void testSetMessages() {
         assertFalse(chat.getMembers().contains(test1));
     }
 
+    /**
+     * Tests the addMessage() method of the Chat class.
+     */
     @Test
-public void testAddMessage() {
-    Contact testContact = new Contact("E", 27378); // create a new contact
-    Message message3 = new Message(testContact); // use the existing constructor
-    message3.setContent("New message");
-    chat.addMessage(message3);
-    assertEquals(3, chat.getMessages().size());
-    assertEquals(message3, chat.getMessages().get(2));
-}
+    public void testAddMessage() {
+        Contact testContact = new Contact("E", 27378); // create a new contact
+        Message message3 = new Message(testContact); // use the existing constructor
+        message3.setContent("New message");
+        chat.addMessage(message3);
+        assertEquals(3, chat.getMessages().size());
+        assertEquals(message3, chat.getMessages().get(2));
+    }
 
+    /**
+     * Tests the readMessages() method of the Chat class.
+     */
     @Test
     public void testReadMessages() {
         for (Message message : chat.getMessages()) {

@@ -3,6 +3,10 @@ import org.junit.jupiter.api.BeforeEach;
 import java.awt.image.BufferedImage;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class contains unit tests for the ImageProcessing class.
+ * It tests the functionality of loading images and default images.
+ */
 public class ImageProcessingTest {
     private ImageProcessing imageProcessing;
     private final String defaultImagePath = "Chat/src/defaultImage.png";
