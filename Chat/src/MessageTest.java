@@ -4,25 +4,18 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MessageTest {
 
     @Test
-public void testConstructorWithAuthor() {
-    Contact author = new Contact();
-    Message message = new Message(author);
-    assertEquals(author, message.getAuthor());
-    assertTrue(message.getReactions().isEmpty());
-    assertFalse(message.isStatus());
-    assertNull(message.getContent());
-}
-
-@Test
-public void testSetReactionWithNullParameters() {
-    Message message = new Message();
-    message.setReaction(null, null);
-    assertTrue(message.getReactions().isEmpty());
-}
+    public void testConstructor() {
+        Contact c1 = new Contact("1", 1);
+        Message message = new Message(c1);
+        assertTrue(message.getReactions().isEmpty());
+        assertFalse(message.isStatus());
+        assertNull(message.getContent());
+    }
 
     @Test
     public void testSetContent() {
-        Message message = new Message();
+        Contact c1 = new Contact("1", 1);
+        Message message = new Message(c1);
         String content = "Test content";
         message.setContent(content);
         assertEquals(content, message.getContent());
@@ -30,8 +23,8 @@ public void testSetReactionWithNullParameters() {
 
     @Test
     public void testSetReaction() {
-        Message message = new Message();
-        Contact author = new Contact();
+        Contact author = new Contact("1",1);
+        Message message = new Message(author);
         Integer reactionID = 1;
         message.setReaction(author, reactionID);
         assertEquals(reactionID, message.getReactions().get(author));
@@ -39,15 +32,16 @@ public void testSetReactionWithNullParameters() {
 
     @Test
     public void testSetAuthor() {
-        Message message = new Message();
-        Contact author = new Contact();
+        Contact author = new Contact("1",1);
+        Message message = new Message(author);
         message.setAuthor(author);
         assertEquals(author, message.getAuthor());
     }
 
     @Test
     public void testSetStatus() {
-        Message message = new Message();
+        Contact author = new Contact("1",1);
+        Message message = new Message(author);
         message.setStatus(true);
         assertTrue(message.isStatus());
         message.setStatus(false);

@@ -9,21 +9,21 @@ public class ContactTest {
 
     @Test
     public void testSetName() {
-        Contact contact = new Contact();
+        Contact contact = new Contact("1",1);
         contact.setName("Test Name");
         assertEquals("Test Name", contact.getName());
     }
 
     @Test
     public void testSetPhoneNumber() {
-        Contact contact = new Contact();
+        Contact contact = new Contact("1",1);
         contact.setPhoneNumber(1234567890);
         assertEquals(1234567890, contact.getPhoneNumber());
     }
 
     @Test
     public void testSetProfileImage() {
-        Contact contact = new Contact();
+        Contact contact = new Contact("1",1);
         ImageIcon imageIcon = new ImageIcon("Chat/src/defaultImage.png");
         contact.setProfileImage(imageIcon);
         assertEquals(imageIcon, contact.getProfileImage());
@@ -31,7 +31,7 @@ public class ContactTest {
 
     @Test
     public void testDateAdded() {
-        Contact contact = new Contact();
+        Contact contact = new Contact("1",1);
         LocalDateTime now = LocalDateTime.now();
         assertTrue(contact.getDateAdded().isBefore(now.plusSeconds(1)) && contact.getDateAdded().isAfter(now.minusSeconds(1)));
     }
