@@ -41,16 +41,16 @@ public class ChatTest {
     }
 
     @Test
-    public void testSetMessages() {
-        List<Message> newMessages = new LinkedList<>();
-        Message message3 = new Message();
-        message3.setContent("New message");
-        newMessages.add(message3);
-        chat.setMessages(newMessages);
-        assertEquals(1, chat.getMessages().size());
-        assertEquals(message3, chat.getMessages().get(0));
-    }
-
+public void testSetMessages() {
+    List<Message> newMessages = new LinkedList<>();
+    Contact testContact = new Contact("E", 27378); // create a new contact
+    Message message3 = new Message(testContact); // use the existing constructor
+    message3.setContent("New message");
+    newMessages.add(message3);
+    chat.setMessages(newMessages);
+    assertEquals(1, chat.getMessages().size());
+    assertEquals(message3, chat.getMessages().get(0));
+}
     @Test
     public void testAddMember() {
         Contact test3 = new Contact("C", 27377);
@@ -68,13 +68,14 @@ public class ChatTest {
     }
 
     @Test
-    public void testAddMessage() {
-        Message message3 = new Message();
-        message3.setContent("New message");
-        chat.addMessage(message3);
-        assertEquals(3, chat.getMessages().size());
-        assertEquals(message3, chat.getMessages().get(2));
-    }
+public void testAddMessage() {
+    Contact testContact = new Contact("E", 27378); // create a new contact
+    Message message3 = new Message(testContact); // use the existing constructor
+    message3.setContent("New message");
+    chat.addMessage(message3);
+    assertEquals(3, chat.getMessages().size());
+    assertEquals(message3, chat.getMessages().get(2));
+}
 
     @Test
     public void testReadMessages() {

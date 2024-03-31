@@ -40,7 +40,6 @@ public class ContactTest {
     public void testCreateChat() {
         Contact contact = new Contact("Test Name", 1234567890);
         List<Contact> members = new LinkedList<>();
-        members.add(contact);
         contact.createChat("Test Chat", members);
         assertEquals(1, contact.getChats().size());
         assertEquals("Test Chat", contact.getChats().get(0).getName());
@@ -50,7 +49,8 @@ public class ContactTest {
     public void testSetMessages() {
         Chat chat = new Chat("Test Chat", new LinkedList<>());
         List<Message> newMessages = new LinkedList<>();
-        Message message3 = new Message();
+        Contact testContact = new Contact("E", 27378); // create a new contact
+        Message message3 = new Message(testContact); // use the existing constructor
         message3.setContent("New message");
         newMessages.add(message3);
         chat.setMessages(newMessages);
