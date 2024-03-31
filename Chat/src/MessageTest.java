@@ -4,13 +4,21 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MessageTest {
 
     @Test
-    public void testConstructor() {
-        Message message = new Message();
-        assertTrue(message.getReactions().isEmpty());
-        assertFalse(message.isStatus());
-        assertNull(message.getContent());
-        assertNull(message.getAuthor());
-    }
+public void testConstructorWithAuthor() {
+    Contact author = new Contact();
+    Message message = new Message(author);
+    assertEquals(author, message.getAuthor());
+    assertTrue(message.getReactions().isEmpty());
+    assertFalse(message.isStatus());
+    assertNull(message.getContent());
+}
+
+@Test
+public void testSetReactionWithNullParameters() {
+    Message message = new Message();
+    message.setReaction(null, null);
+    assertTrue(message.getReactions().isEmpty());
+}
 
     @Test
     public void testSetContent() {
@@ -44,5 +52,16 @@ public class MessageTest {
         assertTrue(message.isStatus());
         message.setStatus(false);
         assertFalse(message.isStatus());
+    }
+
+    @Test
+    public void testCountReaction() {
+        Message message = new Message();
+        Contact author1 = new Contact();
+        Contact author2 = new Contact();
+        Integer reactionID = 1;
+        message.setReaction(author1, reactionID);
+        message.setReaction(author2, reactionID);
+        assertEquals(2, message.countReaction(reactionID));
     }
 }

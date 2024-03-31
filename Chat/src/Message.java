@@ -42,13 +42,13 @@ public class Message {
     }
 
     public int countReaction(Integer reactionID){
-       int count = 0;
+    int count = 0;
 
-       for(HashMap.Entry<Contact, Integer> entry : reaction.entrySet()){
-           if(entry.getValue().equals(reactionID)) count++;
-       }
+    for(HashMap.Entry<Contact, Integer> entry : reaction.entrySet()){
+        if(entry.getValue().equals(reactionID)) count++;
+    }
 
-       return count;
+    return count;
     }
 
     public String getContent() {
