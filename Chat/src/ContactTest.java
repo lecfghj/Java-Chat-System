@@ -5,6 +5,9 @@ import java.util.LinkedList;
 import javax.swing.ImageIcon;
 import java.util.List;
 
+/**
+ * This class contains unit tests for the Contact class.
+ */
 public class ContactTest {
 
     @Test

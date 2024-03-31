@@ -1,8 +1,14 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * This class contains unit tests for the Message class.
+ */
 public class MessageTest {
 
+    /**
+     * Tests the constructor of the Message class.
+     */
     @Test
     public void testConstructor() {
         Contact c1 = new Contact("1", 1);
@@ -12,6 +18,9 @@ public class MessageTest {
         assertNull(message.getContent());
     }
 
+    /**
+     * Tests the setContent method of the Message class.
+     */
     @Test
     public void testSetContent() {
         Contact c1 = new Contact("1", 1);
@@ -21,6 +30,9 @@ public class MessageTest {
         assertEquals(content, message.getContent());
     }
 
+    /**
+     * Tests the setReaction method of the Message class.
+     */
     @Test
     public void testSetReaction() {
         Contact author = new Contact("1",1);
@@ -30,6 +42,9 @@ public class MessageTest {
         assertEquals(reactionID, message.getReactions().get(author));
     }
 
+    /**
+     * Tests the setAuthor method of the Message class.
+     */
     @Test
     public void testSetAuthor() {
         Contact author = new Contact("1",1);
@@ -38,6 +53,9 @@ public class MessageTest {
         assertEquals(author, message.getAuthor());
     }
 
+    /**
+     * Tests the setStatus method of the Message class.
+     */
     @Test
     public void testSetStatus() {
         Contact author = new Contact("1",1);
@@ -48,6 +66,9 @@ public class MessageTest {
         assertFalse(message.isStatus());
     }
 
+    /**
+     * Tests the countReaction method of the Message class.
+     */
     @Test
     public void testCountReaction() {
         Contact author1 = new Contact("Author1", 1); // use the existing constructor
