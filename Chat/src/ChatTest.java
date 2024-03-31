@@ -19,9 +19,9 @@ public class ChatTest {
         members.add(test1);
         members.add(test2);
         chat = new Chat("chat", members);
-        message1 = new Message();
+        message1 = new Message(test1);
         message1.setContent("Hello");
-        message2 = new Message();
+        message2 = new Message(test2);
         message2.setContent("Goodbye");
         chat.getMessages().add(message1);
         chat.getMessages().add(message2);

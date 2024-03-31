@@ -7,7 +7,7 @@ public class UserTest {
     @Test
     public void testAddContact() {
         User user = new User("A", 234);
-        Contact contact = new Contact();
+        Contact contact = new Contact("1",1);
         contact.setName("Test Contact");
         user.addContact(contact);
         assertEquals(1, user.getContactList().size());
@@ -17,9 +17,9 @@ public class UserTest {
     @Test
     public void testSortContactsAlphabetically() {
         User user = new User("0", 123);
-        Contact contact1 = new Contact();
+        Contact contact1 = new Contact("1",1);
         contact1.setName("B");
-        Contact contact2 = new Contact();
+        Contact contact2 = new Contact("2",2);
         contact2.setName("A");
         user.addContact(contact1);
         user.addContact(contact2);
@@ -32,7 +32,7 @@ public class UserTest {
     @Test
     public void testSortContactsNewestToOldest() throws InterruptedException {
         User user = new User("0", 123);
-        Contact contact1 = new Contact();
+        Contact contact1 = new Contact("1",1);
         contact1.setName("A");
         contact1.setPhoneNumber(12345678);
         user.addContact(contact1);
@@ -40,7 +40,7 @@ public class UserTest {
         // Introduce a delay
         Thread.sleep(1000);
 
-        Contact contact2 = new Contact();
+        Contact contact2 = new Contact("2",2);
         contact2.setName("B");
         contact2.setPhoneNumber(34567890);
         user.addContact(contact2);
@@ -53,7 +53,7 @@ public class UserTest {
     @Test
     public void testSortContactsOldestToNewest() throws InterruptedException {
         User user = new User("0",987);
-        Contact contact1 = new Contact();
+        Contact contact1 = new Contact("1",1);
         contact1.setName("A");
         contact1.setPhoneNumber(12345678);
         user.addContact(contact1);
@@ -61,7 +61,7 @@ public class UserTest {
         // Introduce a delay
         Thread.sleep(1000);
 
-        Contact contact2 = new Contact();
+        Contact contact2 = new Contact("2",2);
         contact2.setName("B");
         contact2.setPhoneNumber(34567890);
         user.addContact(contact2);
