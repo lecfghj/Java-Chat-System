@@ -1,14 +1,11 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ImageProcessingTest {
-
     private ImageProcessing imageProcessing;
+    private final String defaultImagePath = "Chat/src/defaultImage.png";
 
     @BeforeEach
     public void setUp() {
@@ -16,26 +13,29 @@ public class ImageProcessingTest {
     }
 
     @Test
-    public void testLoadImage_fileExists() throws IOException {
-        BufferedImage result = imageProcessing.loadImage("Chat/src/defaultImage.png");
-        assertNotNull(result);
-    } //Used default image instead of a real image
+    public void testLoadImage() {
+        String imagePath = "Chat/src/testImage.png";
+        BufferedImage image = imageProcessing.loadImage(imagePath);
+        assertNotNull(image, "Image should not be null if file exists");
+    } // only image that exists in the file is the default image so this test fails
 
     @Test
-    public void testLoadImage_fileDoesNotExist() {
-        BufferedImage result = imageProcessing.loadImage("path/to/nonexistentImage.jpg");
-        assertNull(result);
+    public void testLoadImageFileNotFound() {
+        String imagePath = "Chat/src/nonExistentImage.png";
+        BufferedImage image = imageProcessing.loadImage(imagePath);
+        assertNull(image, "Image should be null if file does not exist");
     }
 
     @Test
-    public void testLoadDefaultImage_fileExists() throws IOException {
-        BufferedImage result = imageProcessing.loadDefaultImage("Chat/src/defaultImage.png");
-        assertNotNull(result);
-    } //Used default image instead of a real image
+    public void testLoadDefaultImage() {
+        BufferedImage image = imageProcessing.loadDefaultImage(defaultImagePath);
+        assertNotNull(image, "Default image should not be null if file exists");
+    }
 
     @Test
-    public void testLoadDefaultImage_fileDoesNotExist() {
-        BufferedImage result = imageProcessing.loadDefaultImage("path/to/nonexistentDefault.jpg");
-        assertNull(result);
+    public void testLoadDefaultImageFileNotFound() {
+        String imagePath = "Chat/src/nonExistentDefaultImage.png";
+        BufferedImage image = imageProcessing.loadDefaultImage(imagePath);
+        assertNull(image, "Default image should be null if file does not exist");
     }
 }
