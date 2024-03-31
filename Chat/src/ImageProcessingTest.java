@@ -3,6 +3,9 @@ import org.junit.jupiter.api.BeforeEach;
 import java.awt.image.BufferedImage;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class for image processing, is not being used by a chat program
+ */
 public class ImageProcessingTest {
     private ImageProcessing imageProcessing;
     private final String defaultImagePath = "Chat/src/defaultImage.png";
