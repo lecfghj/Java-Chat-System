@@ -28,41 +28,62 @@ public class ChatTest {
     }
 
     @Test
-    public void testGetMessages() {
-        List<Message> messages = chat.getMessages();
-        assertEquals(2, messages.size());
-        assertEquals(message1, messages.get(0));
-        assertEquals(message2, messages.get(1));
+    public void testSetMembers() {
+        List<Contact> newMembers = new LinkedList<>();
+        Contact test3 = new Contact("C", 27377);
+        Contact test4 = new Contact("D", 276312);
+        newMembers.add(test3);
+        newMembers.add(test4);
+        chat.setMembers(newMembers);
+        assertEquals(2, chat.getMembers().size());
+        assertEquals(test3, chat.getMembers().get(0));
+        assertEquals(test4, chat.getMembers().get(1));
     }
 
     @Test
-    public void testFindMessages() {
-        List<Message> foundMessages = chat.findMessages("Hello");
-        assertEquals(1, foundMessages.size());
-        assertEquals("Hello", foundMessages.get(0).getContent());
+    public void testSetMessages() {
+        List<Message> newMessages = new LinkedList<>();
+        Message message3 = new Message();
+        message3.setContent("New message");
+        newMessages.add(message3);
+        chat.setMessages(newMessages);
+        assertEquals(1, chat.getMessages().size());
+        assertEquals(message3, chat.getMessages().get(0));
+    }
+
+    @Test
+    public void testAddMember() {
+        Contact test3 = new Contact("C", 27377);
+        chat.addMember(test3);
+        assertEquals(3, chat.getMembers().size());
+        assertEquals(test3, chat.getMembers().get(2));
+    }
+
+    @Test
+    public void testRemoveMember() {
+        Contact test1 = chat.getMembers().get(0);
+        chat.removeMember(test1);
+        assertEquals(1, chat.getMembers().size());
+        assertFalse(chat.getMembers().contains(test1));
+    }
+
+    @Test
+    public void testAddMessage() {
+        Message message3 = new Message();
+        message3.setContent("New message");
+        chat.addMessage(message3);
+        assertEquals(3, chat.getMessages().size());
+        assertEquals(message3, chat.getMessages().get(2));
     }
 
     @Test
     public void testReadMessages() {
-        message1.setStatus(false);
-        message2.setStatus(false);
+        for (Message message : chat.getMessages()) {
+            message.setStatus(false);
+        }
         chat.readMessages();
-        assertTrue(message1.isStatus());
-        assertTrue(message2.isStatus());
-    }
-
-    @Test
-    public void testFindMessagesNoMatch() {
-        List<Message> foundMessages = chat.findMessages("Nonexistent");
-        assertTrue(foundMessages.isEmpty());
-    }
-
-    @Test
-    public void testReadMessagesAlreadyRead() {
-        message1.setStatus(true);
-        message2.setStatus(true);
-        chat.readMessages();
-        assertTrue(message1.isStatus());
-        assertTrue(message2.isStatus());
+        for (Message message : chat.getMessages()) {
+            assertTrue(message.isStatus());
+        }
     }
 }

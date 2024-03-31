@@ -47,4 +47,15 @@ public class MessageTest {
         message.setStatus(false);
         assertFalse(message.isStatus());
     }
+
+    @Test
+    public void testCountReaction() {
+        Message message = new Message();
+        Contact author1 = new Contact();
+        Contact author2 = new Contact();
+        Integer reactionID = 1;
+        message.setReaction(author1, reactionID);
+        message.setReaction(author2, reactionID);
+        assertEquals(2, message.countReaction(reactionID));
+    }
 }

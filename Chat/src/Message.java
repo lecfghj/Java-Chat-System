@@ -65,14 +65,14 @@ public class Message implements Serializable {
      */
     public int countReaction(Integer reactionID){
         // Initialize count at zero
-       int count = 0;
+        int count = 0;
         // Iterate through each element in a map
-       for(HashMap.Entry<Contact, Integer> entry : reaction.entrySet()){
+        for(HashMap.Entry<Contact, Integer> entry : reaction.entrySet()){
            // If current ID equals passed ID, increment count
-           if(entry.getValue().equals(reactionID)) count++;
-       }
+            if(entry.getValue().equals(reactionID)) count++;
+        }
         // Return number of reactions with passed ID
-       return count;
+        return count;
     }
 
     /**
