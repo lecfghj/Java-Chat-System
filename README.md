@@ -50,13 +50,5 @@ This project is a Java-based chat application that simulates real-time communica
 
 4. **Image Management:**
    - Profile images are handled via the `ImageProcessing` class, which allows users to set custom profile pictures or fall back to a default image.
-   - 
-## My Role
-For this project, I was responsible for **back-end development** and **initial system design**. My specific tasks included:
-
-- **System Design:** I structured the application using object-oriented principles and created core classes like User, Contact, Chat, and Message.
-- **Back-End Development:** I implemented key functionalities such as user and contact management, chat creation, message sending, and reaction handling.
-- **Data Persistence:** I set up file-based data storage through serialization to ensure continuity between user sessions.
-- **Image Management:** I developed the image handling feature, allowing users to set profile pictures and manage default images.
 
 This chat system demonstrates fundamental principles of object-oriented programming, data persistence, and file handling. It provides a flexible platform for future extensions into more advanced features like real-time communication and a graphical interface.
